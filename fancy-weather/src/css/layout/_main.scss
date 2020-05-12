@@ -1,0 +1,39 @@
+@import './../abstracts/variables';
+.main {
+    width: 100%;
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.weather{
+    grid-column: 1/2;
+    height: 100%;
+
+    &__current{
+        background-color: red;
+        width: 100%;
+        height: 450px;
+    }
+
+    &__forecast{
+        background-color: tomato;
+        width: 100%;
+        height: 150px;
+    }
+}
+
+.location{
+    grid-column: 2/3;
+    height: 100%;
+    background-color: blue;
+}
+
+.current{
+
+    &__info{
+        color: $color-white;
+
+    }
+
+}

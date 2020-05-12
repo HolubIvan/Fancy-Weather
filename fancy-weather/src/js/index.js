@@ -10,8 +10,13 @@ import '../css/base/_fonts.scss';
 import '../css/base/_typography.scss';
 import '../css/base/_helpers.scss';
 import '../css/layout/_header.scss';
+import '../css/layout/_main.scss';
 import '../css/layout/_footer.scss';
 import '../css/components/_button.scss';
+import '../css/components/_arrow-block.scss';
+import '../css/components/_language.scss';
+import '../css/components/_temperature.scss';
+import '../css/components/_city-search.scss';
 import '../css/pages/_home.scss';
 import '../css/themes/_default.scss';
 

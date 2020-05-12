@@ -1,0 +1,30 @@
+@import './../abstracts/variables';
+
+.temperature {
+    width: 90px;
+    height: 45px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 2rem;
+    border-radius: 8px;
+
+    &__farengate{
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        background-color: $color-orange;
+        color: $color-white;
+        border: none;
+    }
+
+    &__celsius{
+        background-color: $color-orange;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        color: $color-white;
+        border: none;
+    }
+}
+
+.active-temperature {
+    background-color: $color-blue !important;
+}

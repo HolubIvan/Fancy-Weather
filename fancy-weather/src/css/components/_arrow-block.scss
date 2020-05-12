@@ -1,0 +1,15 @@
+@import './../abstracts/variables';
+
+.arrows-block {
+    width: 45px;
+    height: 45px;
+    background-color: $color-blue;
+    justify-self: end;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 0;
+
+    &__img {
+      transform: scale(1.2);
+    }
+}

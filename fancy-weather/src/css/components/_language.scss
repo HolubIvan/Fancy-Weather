@@ -1,0 +1,66 @@
+@import './../abstracts/variables';
+
+.language {
+    width: 70px;
+    height: 45px;
+    outline: none;
+    position: relative;
+    font-size: 2rem;
+    color: $color-white;
+    
+
+    &__change{
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transition: all .4s;
+        background-color: $color-blue;
+        border-radius: 8px;
+
+        &_lang{
+            position: absolute;
+            top: 25%;
+            left: 18%;
+        }
+        &_arrow{
+            position: absolute;
+            top:36%;
+            right: 12%;
+            width: 15px;
+        }
+        &:hover{
+            background-color: $color-orange;
+            border-radius: 8px;
+        }
+    }
+
+    &__buttons{
+        position: absolute;
+        top:45px;
+        display: none;
+
+
+        button{
+            width: 70px;
+            height: 45px;
+            background-color: $color-blue;
+            outline: none;
+            position: relative;
+            color: $color-white;
+            cursor: pointer;
+            border: none;
+            transition: all .4s;
+
+            &:nth-child(3){
+                border-bottom-right-radius: 8px;
+                border-bottom-left-radius: 8px;
+            }
+
+
+            &:hover{
+                background-color: $color-orange;
+            }
+        }
+    }
+
+}

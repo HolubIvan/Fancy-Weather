@@ -11,10 +11,84 @@
     <div class="wrapper">
 
         <header class="header">
-            <p>aaaa</p>
+
+            <button class="arrows-block">
+                <img class="arrows-block__img" src="./img/arrow.png" alt="arrows">
+            </button>
+
+            <div class="language">
+
+                <div class="language__change">
+                    <span class="language__change_lang">EN</span>
+                    <img class="language__change_arrow" src="./img/arr-down.png" alt="arrow">
+                </div>
+
+                <div class="language__buttons">
+                    <button type="submit">EN</button>
+                    <button type="submit">RU</button>
+                    <button type="submit">BE</button>
+                </div>
+            </div>
+            
+            <div class="temperature">
+                <button type="submit" class="temperature__farengate active-temperature">&#8457;</button>
+                <button type="submit" class="temperature__celsius">&#8451;</button>
+            </div>
+
+            <div class="city-search">
+                <input type="text" class="city-search__input" placeholder="Search city or ZIP">
+                <button type="submit" class="city-search__button">Search</button>
+            </div>
+
         </header>
 
         <main class="main">
+
+            <div class="weather">
+                
+                <div class="weather__current current">
+                    <div class="current__info">
+                        <h2 class="current__city">Minsk, Belarus</h2>
+                        <p class="current__date">Mon 28 October 17:23</p>
+                    </div>
+                    <p class="current__temperature">10</p>
+                    <img class="current__icon" src="./img/cloud.png" alt="cloud">
+                    <div class="current__details details">
+                        <p class="details__clouds">overcast</p>
+                        <p class="details__feels">Feels like: 7</p>
+                        <p class="details__wind">2 m/s</p>
+                        <p class="details__humidity">83%</p>
+                    </div>
+
+                </div>
+
+                <div class="weather__forecast">
+                    <div class="forecast">
+                        <p class="forecast__day">Wednesday</p>
+                        <p class="forecast__temperature">7</p>
+                        <img class="forecast__img" src="./img/cloud.png" alt="icon">
+                    </div>
+
+                    <div class="forecast">
+                        <p class="forecast__day">Wednesday</p>
+                        <p class="forecast__temperature">7</p>
+                        <img class="forecast__img" src="./img/cloud.png" alt="icon">
+                    </div>
+
+                    <div class="forecast">
+                        <p class="forecast__day">Wednesday</p>
+                        <p class="forecast__temperature">7</p>
+                        <img class="forecast__img" src="./img/cloud.png" alt="icon">
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="location">
+                
+            </div>
 
         </main>
 
