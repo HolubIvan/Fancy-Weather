@@ -20,3 +20,8 @@ import '../css/components/_city-search.scss';
 import '../css/pages/_home.scss';
 import '../css/themes/_default.scss';
 
+// JS MODULES
+
+import currentLocation from './location';
+
+currentLocation();

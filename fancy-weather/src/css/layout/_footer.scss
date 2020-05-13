@@ -1,0 +1,25 @@
+@import './../abstracts/variables';
+
+.footer{
+
+    font-size: 2rem;
+    font-family: Lato-Thin;
+    cursor: pointer;
+    max-width: 100%;
+    height: 20px;
+    position: relative;
+
+    &__rss{
+        text-decoration: none;
+        color: $color-white;
+        position: absolute;
+        right: 13%;
+    }
+
+    &__git{
+        text-decoration: none;
+        color: $color-white;
+        position: absolute;
+        right: 4%;
+    }
+}

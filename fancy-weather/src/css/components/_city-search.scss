@@ -20,13 +20,15 @@
         border-bottom-left-radius: 5px;
         background: $color-blue-light;
         color: $color-orange;
+        transition: all .4s;
 
         &::placeholder {
             color: $color-blue-dark;
             opacity: 1;
             font-size: 1.6rem;
             font-weight: 300;
-          }
+            transition: all .4s;
+        }
     }
 
     &__button{
@@ -46,5 +48,17 @@
             background-color: $color-blue-dark;
             border: 2px solid $color-blue-dark !important;
         }
+    }
+}
+
+.city-search__input:focus{
+    background: $color-orange;
+    color: $color-blue-dark;
+
+    &::placeholder {
+        color: $color-blue-dark;
+        opacity: 1;
+        font-size: 1.8rem;
+        font-weight: 300;
     }
 }
