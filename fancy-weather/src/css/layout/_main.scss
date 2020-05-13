@@ -1,7 +1,6 @@
 @import './../abstracts/variables';
 .main {
     width: 100%;
-    height: 600px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -11,29 +10,121 @@
     height: 100%;
 
     &__current{
-        background-color: red;
         width: 100%;
         height: 450px;
     }
 
     &__forecast{
-        background-color: tomato;
         width: 100%;
         height: 150px;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
     }
 }
 
 .location{
     grid-column: 2/3;
     height: 100%;
-    background-color: blue;
 }
 
 .current{
+    position: relative;
+    color: $color-white;
 
     &__info{
-        color: $color-white;
+        font-style: normal;
+        font-family: Lato-Thin;
+        text-transform: uppercase;
+        padding: 50px 10px 20px;
+        line-height: 57px;
+    }
+
+    &__city{
+        font-size: 5.4rem;
+        margin-left: 3rem;
+    }
+
+    &__date{
+        font-size: 2.5rem;
+        margin-left: 3rem;
+    }
+
+    &__temperature{
+        font-size: 30rem;
+        font-family: Lato-Bold;
+        position: absolute;
+        top: 25%;
+        left: 10%;
 
     }
 
+    &__icon{
+        width: 150px;
+        position: absolute;
+        top: 25%;
+        right: 20%;
+    }
+
+    &__details{
+        position: absolute;
+        top: 60%;
+        right: 5%;
+        font-size: 2.2rem;
+        color: $color-white;
+        font-family: Lato-Thin;
+        line-height: 37px;
+        text-transform: uppercase;
+    }
+}
+
+.forecast{
+    color: $color-white;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    position: relative;
+
+    &__day{
+        font-family: Lato-Thin;
+        font-size: 2.2rem;
+        line-height: 2.7rem;
+        text-transform: uppercase;
+        
+    }
+
+    &__temperature{
+        font-style: normal;
+        font-family: Lato-Bold;
+        font-size: 80px;
+        line-height: 98px;
+        text-transform: uppercase;
+    }
+
+    &__img{
+        width: 70px;
+        position: absolute;
+        top: 42px;
+        right: 0;
+    }
+}
+
+.location {
+
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+
+    &__map{
+        display: inline-block;
+    }
+
+    &__coordinates{
+        position: absolute;
+        right: 23%;
+        bottom: 10%;
+        font-size: 2.4rem;
+        color: $color-white;
+        font-family: Lato-Thin;
+    }
 }

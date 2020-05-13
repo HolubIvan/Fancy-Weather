@@ -35,10 +35,10 @@
                 <button type="submit" class="temperature__celsius">&#8451;</button>
             </div>
 
-            <div class="city-search">
+            <form action="index.html" method="get" class="city-search">
                 <input type="text" class="city-search__input" placeholder="Search city or ZIP">
                 <button type="submit" class="city-search__button">Search</button>
-            </div>
+            </form>
 
         </header>
 
@@ -54,10 +54,10 @@
                     <p class="current__temperature">10</p>
                     <img class="current__icon" src="./img/cloud.png" alt="cloud">
                     <div class="current__details details">
-                        <p class="details__clouds">overcast</p>
-                        <p class="details__feels">Feels like: 7</p>
-                        <p class="details__wind">2 m/s</p>
-                        <p class="details__humidity">83%</p>
+                        <p class="details__clouds">OVERCAST</p>
+                        <p class="details__feels">FEELS LIKE: 7&#176;</p>
+                        <p class="details__wind">WIND: 2 m/s</p>
+                        <p class="details__humidity">HUMIDITY: 83%</p>
                     </div>
 
                 </div>
@@ -65,19 +65,19 @@
                 <div class="weather__forecast">
                     <div class="forecast">
                         <p class="forecast__day">Wednesday</p>
-                        <p class="forecast__temperature">7</p>
+                        <p class="forecast__temperature">7&#176;</p>
                         <img class="forecast__img" src="./img/cloud.png" alt="icon">
                     </div>
 
                     <div class="forecast">
                         <p class="forecast__day">Wednesday</p>
-                        <p class="forecast__temperature">7</p>
+                        <p class="forecast__temperature">7&#176;</p>
                         <img class="forecast__img" src="./img/cloud.png" alt="icon">
                     </div>
 
                     <div class="forecast">
                         <p class="forecast__day">Wednesday</p>
-                        <p class="forecast__temperature">7</p>
+                        <p class="forecast__temperature">7&#176;</p>
                         <img class="forecast__img" src="./img/cloud.png" alt="icon">
                     </div>
 
@@ -87,13 +87,20 @@
             </div>
 
             <div class="location">
-                
+                <img class="location__map" src="./img/map.png" alt="map">
+                <div class="location__coordinates">
+                    <p class="location__latitude">
+                        Latitude: 50°54'
+                    </p>
+                    <p class="location__longitude">
+                        Longitude: 55°05'
+                    </p>
+                </div>
             </div>
 
         </main>
 
         <footer class="footer">
-
         </footer>
 
     </div>

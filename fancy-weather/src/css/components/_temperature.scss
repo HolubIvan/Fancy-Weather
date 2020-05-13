@@ -14,6 +14,8 @@
         background-color: $color-orange;
         color: $color-white;
         border: none;
+        cursor: pointer;
+        outline: none;
     }
 
     &__celsius{
@@ -22,6 +24,8 @@
         border-bottom-right-radius: 8px;
         color: $color-white;
         border: none;
+        cursor: pointer;
+        outline: none;
     }
 }
 
