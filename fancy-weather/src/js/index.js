@@ -21,7 +21,21 @@ import '../css/pages/_home.scss';
 import '../css/themes/_default.scss';
 
 // JS MODULES
+import {wrapper, changeBackgroundArrows, languageChangeButton} from './variables'
+import {currentLocation} from './location';
+import {getWeather} from './weather';
+import {getRandomBackground} from './randomPhotoBackground';
+import {changeLanguage} from './languageChange';
 
-import currentLocation from './location';
 
-currentLocation();
+
+// currentLocation();
+getWeather('Sumy', 'ru');
+
+// get random background to wrapper when arrows button clicked
+changeBackgroundArrows.addEventListener('click', async ()=> {
+  const background = await getRandomBackground;
+  wrapper.style.backgroundImage = `url(${background})`;
+})
+
+languageChangeButton.addEventListener('click', changeLanguage);
