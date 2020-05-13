@@ -21,16 +21,16 @@ import '../css/pages/_home.scss';
 import '../css/themes/_default.scss';
 
 // JS MODULES
-import {wrapper, changeBackgroundArrows, languageChangeButton} from './variables'
+import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang} from './variables';
 import {currentLocation} from './location';
-import {getWeather} from './weather';
+import {getWeather} from './getWeather';
 import {getRandomBackground} from './randomPhotoBackground';
-import {changeLanguage} from './languageChange';
+import {languageOpenCloseMenu, changeLanguage} from './languageChange';
 
 
 
-// currentLocation();
-getWeather('Sumy', 'ru');
+
+
 
 // get random background to wrapper when arrows button clicked
 changeBackgroundArrows.addEventListener('click', async ()=> {
@@ -38,4 +38,18 @@ changeBackgroundArrows.addEventListener('click', async ()=> {
   wrapper.style.backgroundImage = `url(${background})`;
 })
 
-languageChangeButton.addEventListener('click', changeLanguage);
+
+// Open or Close language menu and change styles
+languageChangeWrapper.addEventListener('click', ()=>{
+    languageOpenCloseMenu();
+});
+
+languageChangeButtons.addEventListener('click', (event)=>{
+  event.preventDefault();
+  changeLanguage(event);
+}) 
+
+window.addEventListener('load', async ()=>{
+  const location = await currentLocation();
+  getWeather(location);
+})

@@ -7,6 +7,8 @@
     position: relative;
     font-size: 2rem;
     color: $color-white;
+    // z-index: 20;
+
     
 
     &__change{
@@ -28,9 +30,9 @@
             right: 12%;
             width: 15px;
         }
+
         &:hover{
-            background-color: $color-orange;
-            border-radius: 8px;
+           
         }
     }
 
@@ -38,14 +40,14 @@
         position: absolute;
         top:45px;
         display: none;
+        z-index: 10;
 
 
-        button{
+        button {
             width: 70px;
             height: 45px;
             background-color: $color-blue;
             outline: none;
-            position: relative;
             color: $color-white;
             cursor: pointer;
             border: none;
@@ -56,10 +58,10 @@
                 border-bottom-left-radius: 8px;
             }
 
-
             &:hover{
                 background-color: $color-orange;
             }
+
         }
     }
 
