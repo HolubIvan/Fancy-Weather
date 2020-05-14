@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-use-before-define
-export {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang};
+export {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer};
 
 const wrapper = document.querySelector('.wrapper');
+const mainContainer = document.querySelector('.main');
 const changeBackgroundArrows = document.querySelector('.arrows-block');
 
 const languageChangeWrapper = document.querySelector('.language');
