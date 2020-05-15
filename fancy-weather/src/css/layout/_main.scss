@@ -104,8 +104,8 @@
     &__img{
         width: 70px;
         position: absolute;
-        top: 42px;
-        right: 0;
+        top: 13px;
+        right: -8px;
     }
 }
 
@@ -116,18 +116,23 @@
     align-items: center;
     position: relative;
 
-    &__map{
-        display: inline-block;
-    }
-
     &__coordinates{
         position: absolute;
-        right: 23%;
-        bottom: 10%;
+        left: 27%;
+        bottom: 17%;
         font-size: 2.4rem;
         color: $color-white;
         font-family: Lato-Thin;
     }
 }
 
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+#map { 
+    position: absolute; 
+    top: 65px;
+    width: 42rem;
+    height: 42rem;
+    clip-path: polygon(50% 0, 100% 0, 100% 52%, 100% 52%, 100% 100%, 70% 100%, 56% 88%, 0 88%, 0 29%, 0 0);
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+
+}

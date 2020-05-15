@@ -22,12 +22,14 @@ import '../css/themes/_default.scss';
 
 // JS MODULES
 
-import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer} from './variables';
+import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch} from './variables';
 import {currentLocation} from './location';
 import {getWeather} from './getWeather';
 import {getRandomBackground} from './randomPhotoBackground';
 import {languageOpenCloseMenu, changeLanguage} from './languageChange';
 import Weather from './Weather';
+import initMapOnLayout from './map';
+
 
 
 
@@ -50,22 +52,20 @@ languageChangeButtons.addEventListener('click', (event)=>{
   changeLanguage(event);
 }) 
 
+
+buttonCitySearch.addEventListener('click', async (event)=>{
+  event.preventDefault();
+  const input = inputCitySearch.value;
+  const currentWeather = await getWeather(input);
+  mainContainer.innerHTML = new Weather(currentWeather).createWeather();
+  initMapOnLayout(currentWeather);
+})
+
+
 window.addEventListener('load', async ()=>{
   const location = await currentLocation();
   const currentWeather = await getWeather(location);
   mainContainer.innerHTML = new Weather(currentWeather).createWeather();
-  getMap();
+  initMapOnLayout(currentWeather);
 })
-
-
-
-function getMap(){
-  mapboxgl.accessToken = 'pk.eyJ1IjoiZ29sdWJiYjEzIiwiYSI6ImNrYTZwcnY3dzA5YWMyeG9oZnh4a3FqcnMifQ.TiG6l8b-Lm5kCl9ZdzO-UA';
-  var map = new mapboxgl.Map({
-  container: 'map', // container id
-  style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-  center: [-74.5, 40], // starting position [lng, lat]
-  zoom: 9 // starting zoom
-  });
-}
 
