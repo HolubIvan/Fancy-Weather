@@ -9,6 +9,7 @@
     grid-template-columns: repeat(4, 1fr);
     border: 2px solid $color-blue;
     border-radius: 6px;
+    position: relative;
 
     &__input{
         grid-column: 1/4;
@@ -49,6 +50,17 @@
             border: 2px solid $color-blue-dark !important;
         }
     }
+
+    &__microphone{
+        position: absolute;
+        top: 2px;
+        right: 92px;
+        width: 35px;
+        opacity: .7;
+        transition: all .3s;
+        cursor: pointer;
+        z-index: 30;
+    }
 }
 
 .city-search__input:focus{
@@ -61,4 +73,8 @@
         font-size: 1.8rem;
         font-weight: 300;
     }
+}
+
+.city-search__microphone:hover{
+    opacity: 1;
 }

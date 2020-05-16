@@ -22,7 +22,7 @@ import '../css/themes/_default.scss';
 
 // JS MODULES
 
-import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius} from './variables';
+import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone} from './variables';
 import currentLocation from './location';
 import getWeather from './getWeather';
 import getRandomBackground from './randomPhotoBackground';
@@ -30,10 +30,15 @@ import {languageOpenCloseMenu, changeLanguage} from './languageChange';
 import Weather from './Weather';
 import initMapOnLayout from './map';
 import getTimeZone from './timezone';
-import {celsiufToFarengeit , farengeitToCelsius, changeActiveTemperatureStyle} from './temperatureConversion';
+import {changeActiveTemperatureStyle} from './temperatureConversion';
+import audioCitySearch from './audioSearch';
+
+export {getWeatherAndRenderToDom};
 
 
-
+// audio search handler
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+microphone.addEventListener('click', audioCitySearch);
 
 
 // get random background to wrapper when arrows button clicked
@@ -53,8 +58,7 @@ const getWeatherAndRenderToDom = async (location)=>{
 }
 
 
-// change temperature scale
-
+// change temperature units
 temperatureButton.addEventListener('click', async (event)=>{
   event.preventDefault();
   changeActiveTemperatureStyle(event);

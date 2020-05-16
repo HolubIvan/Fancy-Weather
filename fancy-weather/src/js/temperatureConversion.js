@@ -1,14 +1,6 @@
 import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch, temperatureButton, temperatureFahrenheit, temperatureCelsius} from './variables';
 
-export {celsiusToFahrenheit , fahrenheitToCelsius, changeActiveTemperatureStyle};
-
-const celsiusToFahrenheit = (temp)=>{
-  return temp * 1.8 + 32;
-}
-
-const fahrenheitToCelsius = (temp)=>{
-  return (temp - 32) / 1.8;
-}
+export {changeActiveTemperatureStyle};
 
 const changeActiveTemperatureStyle = (event)=>{
   if(event.target.getAttribute('data') === 'celsius'){
