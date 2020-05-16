@@ -8,10 +8,10 @@
     font-size: 2rem;
     border-radius: 8px;
 
-    &__farengate{
+    &__fahrenheit{
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-        background-color: $color-orange;
+        background-color: $color-blue;
         color: $color-white;
         border: none;
         cursor: pointer;
@@ -19,16 +19,16 @@
     }
 
     &__celsius{
-        background-color: $color-orange;
+        background-color: $color-blue;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
         color: $color-white;
         border: none;
-        cursor: pointer;
+        cursor: default;
         outline: none;
     }
 }
 
 .active-temperature {
-    background-color: $color-blue !important;
+    background-color: $color-orange !important;
 }

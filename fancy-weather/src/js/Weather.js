@@ -1,5 +1,5 @@
 export default class Weather{
-  constructor(data, lang = 'en', timezone){
+  constructor(data, timezone){
     this.city = data.city.name;
     this.country = data.city.country;
     this.date = new Date();
@@ -17,7 +17,6 @@ export default class Weather{
     this.dayTomorrow = new Date(data.list[8].dt_txt).toLocaleString('en-EN',{ weekday: 'long' });
     this.dayAfterTomorrow = new Date(data.list[16].dt_txt).toLocaleString('en-EN',{ weekday: 'long' });
     this.dayIn2Days = new Date(data.list[24].dt_txt).toLocaleString('en-EN',{ weekday: 'long' });
-    this.lang = lang;
   }
 
   createWeather(){
@@ -30,10 +29,10 @@ export default class Weather{
                               </p>
                           </div>
                           <p class="current__temperature">${this.currentTemperature.toFixed()}</p>
-                          <img class="current__icon" src="http://openweathermap.org/img/w/${this.icon}.png" alt="cloud">
+                          <img class="current__icon" src="http://openweathermap.org/img/wn/${this.icon}@2x.png" alt="cloud">
                           <div class="current__details details">
                               <p class="details__clouds">OVERCAST</p>
-                              <p class="details__feels">FEELS LIKE: ${this.feels}&#176;</p>
+                              <p class="details__feels">FEELS LIKE: ${Math.round(this.feels)}&#176;</p>
                               <p class="details__wind">WIND: ${this.wind} m/s</p>
                               <p class="details__humidity">HUMIDITY: ${this.humidity}%</p>
                           </div>
