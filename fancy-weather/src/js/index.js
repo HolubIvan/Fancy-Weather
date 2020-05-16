@@ -42,14 +42,41 @@ changeBackgroundArrows.addEventListener('click', async ()=> {
   wrapper.style.backgroundImage = `url(${background})`;
 })
 
+// MAIN FUNCTION to get weather and render by class to DOM
+const getWeatherAndRenderToDom = async (location)=>{
+  const language = languageChangeCurrentLang.textContent.toLowerCase();
+  const temperatureUnit = temperatureButton.getAttribute('active'); // celsius or fahrenheit
+  const currentWeather = await getWeather(location, language, temperatureUnit);  // get weather obj with latitude, longitude, weather details
+  const timezone = await getTimeZone(currentWeather); // get timezone by 'Asia/Shanghai' format
+  mainContainer.innerHTML = new Weather(currentWeather, timezone).createWeather(); // create layout and render inside DOM
+  initMapOnLayout(currentWeather);
+}
+
 
 // change temperature scale
-let isCelsius = true;
-temperatureButton.addEventListener('click', (event)=>{
-  changeActiveTemperatureStyle(event);
-  // if(event.target.getAttribute('data') === 'fahrenheit'){
 
-  // }
+temperatureButton.addEventListener('click', async (event)=>{
+  event.preventDefault();
+  changeActiveTemperatureStyle(event);
+  if(event.target.getAttribute('data') === 'fahrenheit'){
+
+    if(inputCitySearch.value === ''){
+      const location = await currentLocation();
+      await getWeatherAndRenderToDom(location);
+    } else {
+      const input = inputCitySearch.value;
+      await getWeatherAndRenderToDom(input);
+    }
+
+  } else if (event.target.getAttribute('data') === 'celsius'){
+    if(inputCitySearch.value === ''){
+      const location = await currentLocation();
+      await getWeatherAndRenderToDom(location);
+    } else {
+      const input = inputCitySearch.value;
+      await getWeatherAndRenderToDom(input);
+    }
+  }
 })
 
 
@@ -72,23 +99,11 @@ languageChangeButtons.addEventListener('click', (event)=>{
 
 buttonCitySearch.addEventListener('click', async (event)=>{
   event.preventDefault();
-  const input = inputCitySearch.value;  // get city name
-  const currentWeather = await getWeather(input);  // get weather obj with latitude, longitude, weather details
-  const timezone = await getTimeZone(currentWeather);  // get timezone by 'Asia/Shanghai' format
-  mainContainer.innerHTML = new Weather(currentWeather, timezone).createWeather();  // create layout and render inside DOM
-  initMapOnLayout(currentWeather);
+  const input = inputCitySearch.value;
+  await getWeatherAndRenderToDom(input);
 })
-
-
-
-
-
 
 window.addEventListener('load', async ()=>{
-  const location = await currentLocation();  // get city name
-  const currentWeather = await getWeather(location);  // get weather obj with latitude, longitude, weather details
-  const timezone = await getTimeZone(currentWeather); // get timezone by 'Asia/Shanghai' format
-  mainContainer.innerHTML = new Weather(currentWeather, timezone).createWeather(); // create layout and render inside DOM
-  initMapOnLayout(currentWeather);
+  const location = await currentLocation();
+  await getWeatherAndRenderToDom(location);
 })
-

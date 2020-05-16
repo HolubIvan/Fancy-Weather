@@ -12,6 +12,7 @@ const fahrenheitToCelsius = (temp)=>{
 
 const changeActiveTemperatureStyle = (event)=>{
   if(event.target.getAttribute('data') === 'celsius'){
+    temperatureButton.setAttribute('active', 'metric');
     temperatureCelsius.classList.add('active-temperature');
     temperatureFahrenheit.classList.remove('active-temperature');
     temperatureFahrenheit.removeAttribute('disabled');
@@ -19,6 +20,7 @@ const changeActiveTemperatureStyle = (event)=>{
     temperatureCelsius.setAttribute('disabled', 'true');
     temperatureCelsius.style.cursor = 'default';
   } else if (event.target.getAttribute('data') === 'fahrenheit'){
+    temperatureButton.setAttribute('active', 'imperial');
     temperatureCelsius.classList.remove('active-temperature');
     temperatureFahrenheit.classList.add('active-temperature');
     temperatureCelsius.removeAttribute('disabled');
