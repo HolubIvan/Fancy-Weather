@@ -1,14 +1,16 @@
 export default class Weather{
-  constructor(data, lang = 'en'){
+  constructor(data, lang = 'en', timezone){
     this.city = data.city.name;
     this.country = data.city.country;
     this.date = new Date();
+    this.timezone = timezone;
     this.currentTemperature = data.list[0].main.temp;
     this.feels = data.list[0].main.feels_like;
     this.wind = data.list[0].wind.speed;
     this.humidity = data.list[0].main.humidity;
     this.latitude = data.city.coord.lat;
     this.longitude = data.city.coord.lon;
+    this.icon = data.list[0].weather[0].icon;
     this.tempTomorrow = data.list[8].main.temp;
     this.tempAfterTomorrow = data.list[16].main.temp;
     this.tempIn2Days = data.list[24].main.temp;
@@ -24,10 +26,11 @@ export default class Weather{
                       <div class="weather__current current">
                           <div class="current__info">
                               <h2 class="current__city">${this.city}, ${this.country}</h2>
-                              <p class="current__date">${this.date.toLocaleString('en-EN',{ weekday: 'short',  day: 'numeric' ,month: 'long'})}, ${this.date.toLocaleTimeString()}</p>
+                              <p class="current__date">${this.date.toLocaleString('en-EN',{ weekday: 'short',  day: 'numeric' ,month: 'long' ,hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: this.timezone, hour12: false})}
+                              </p>
                           </div>
                           <p class="current__temperature">${this.currentTemperature.toFixed()}</p>
-                          <img class="current__icon" src="./img/cloud.png" alt="cloud">
+                          <img class="current__icon" src="http://openweathermap.org/img/w/${this.icon}.png" alt="cloud">
                           <div class="current__details details">
                               <p class="details__clouds">OVERCAST</p>
                               <p class="details__feels">FEELS LIKE: ${this.feels}&#176;</p>
@@ -75,4 +78,3 @@ export default class Weather{
     return layout;
   }
 }
-

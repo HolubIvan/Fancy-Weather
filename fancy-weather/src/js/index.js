@@ -23,12 +23,13 @@ import '../css/themes/_default.scss';
 // JS MODULES
 
 import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch} from './variables';
-import {currentLocation} from './location';
-import {getWeather} from './getWeather';
-import {getRandomBackground} from './randomPhotoBackground';
+import currentLocation from './location';
+import getWeather from './getWeather';
+import getRandomBackground from './randomPhotoBackground';
 import {languageOpenCloseMenu, changeLanguage} from './languageChange';
 import Weather from './Weather';
 import initMapOnLayout from './map';
+import getTimeZone from './timezone';
 
 
 
@@ -55,17 +56,19 @@ languageChangeButtons.addEventListener('click', (event)=>{
 
 buttonCitySearch.addEventListener('click', async (event)=>{
   event.preventDefault();
-  const input = inputCitySearch.value;
-  const currentWeather = await getWeather(input);
-  mainContainer.innerHTML = new Weather(currentWeather).createWeather();
+  const input = inputCitySearch.value;  // get city name
+  const currentWeather = await getWeather(input);  // get weather obj with latitude, longitude, weather details
+  const timezone = await getTimeZone(currentWeather);  // get timezone by 'Asia/Shanghai' format
+  mainContainer.innerHTML = new Weather(currentWeather, 'en', timezone).createWeather();  // create layout and render inside DOM
   initMapOnLayout(currentWeather);
 })
 
 
 window.addEventListener('load', async ()=>{
-  const location = await currentLocation();
-  const currentWeather = await getWeather(location);
-  mainContainer.innerHTML = new Weather(currentWeather).createWeather();
+  const location = await currentLocation();  // get city name
+  const currentWeather = await getWeather(location);  // get weather obj with latitude, longitude, weather details
+  const timezone = await getTimeZone(currentWeather); // get timezone by 'Asia/Shanghai' format
+  mainContainer.innerHTML = new Weather(currentWeather, 'en', timezone).createWeather(); // create layout and render inside DOM
   initMapOnLayout(currentWeather);
 })
 

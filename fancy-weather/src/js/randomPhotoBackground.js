@@ -1,6 +1,7 @@
-export {getRandomBackground};
+// return url link with random photo
 
-async function getRandomBackground(){
+// eslint-disable-next-line consistent-return
+export default async function getRandomBackground(){
   const url = 'https://api.unsplash.com/photos/random?orientation=landscape&per_page=1&query=dark_forest&client_id=WwYdsWKYkxqd2zp0cTzMmSfSdKBIqZYvGFKB8DSAgjw';
   try{
     const response = await fetch(url);
