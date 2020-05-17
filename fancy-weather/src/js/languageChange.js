@@ -24,5 +24,6 @@ const languageOpenCloseMenu = ()=>{
 
 const changeLanguage = (event)=>{
   const chosenLanguage = event.target.textContent;
+  localStorage.setItem('lang', chosenLanguage.toLowerCase());
   languageChangeCurrentLang.textContent = chosenLanguage;
 }

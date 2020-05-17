@@ -7,7 +7,6 @@
     position: relative;
     font-size: 2rem;
     color: $color-white;
-    // z-index: 20;
 
     
 
@@ -16,7 +15,7 @@
         height: 100%;
         cursor: pointer;
         transition: all .4s;
-        background-color: $color-blue;
+        background-color: $color-orange !important;
         border-radius: 8px;
 
         &_lang{

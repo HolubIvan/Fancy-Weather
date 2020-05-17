@@ -34,6 +34,7 @@ import {changeActiveTemperatureStyle} from './temperatureBlockStyle';
 import audioCitySearch from './audioSearch';
 import {weatherIcons} from "./weatherIcons";
 import getIcons from './getIcon';
+import {setUserTemperatureSettings, setUserLangSettings} from './userSettings';
 
 export {getWeatherAndRenderToDom};
 
@@ -54,9 +55,9 @@ changeBackgroundArrows.addEventListener('click', async ()=> {
 
 // MAIN FUNCTION to get weather and render by class to DOM
 const getWeatherAndRenderToDom = async (location)=>{
-  const language = languageChangeCurrentLang.textContent.toLowerCase();
-  const temperatureUnit = temperatureButton.getAttribute('active'); // celsius or fahrenheit
-  const currentWeather = await getWeather(location, language, temperatureUnit);  // get weather obj with latitude, longitude, weather details
+  const language = localStorage.getItem('lang');
+  const temperature = localStorage.getItem('temperature'); // celsius or fahrenheit
+  const currentWeather = await getWeather(location, language, temperature);  // get weather obj with latitude, longitude, weather details
   const timezone = await getTimeZone(currentWeather); // get timezone by 'Asia/Shanghai' format
   const icons = getIcons(currentWeather, weatherIcons); // get icon from icon object with svg icons
   mainContainer.innerHTML = new Weather(currentWeather, timezone, icons).createWeather(); // create layout and render inside DOM
@@ -70,7 +71,7 @@ temperatureButton.addEventListener('click', async (event)=>{
   event.preventDefault();
   changeActiveTemperatureStyle(event);
   if(event.target.getAttribute('data') === 'fahrenheit'){
-
+    localStorage.setItem('temperature', 'imperial');
     if(inputCitySearch.value === ''){
       const location = await currentLocation();
       await getWeatherAndRenderToDom(location);
@@ -80,6 +81,7 @@ temperatureButton.addEventListener('click', async (event)=>{
     }
 
   } else if (event.target.getAttribute('data') === 'celsius'){
+    localStorage.setItem('temperature', 'metric');
     if(inputCitySearch.value === ''){
       const location = await currentLocation();
       await getWeatherAndRenderToDom(location);
@@ -118,6 +120,8 @@ buttonCitySearch.addEventListener('click', async (event)=>{
 
 // get weather by current location
 window.addEventListener('load', async ()=>{
+  setUserTemperatureSettings();
+  setUserLangSettings();
   const location = await currentLocation();
   await getWeatherAndRenderToDom(location);
 })
