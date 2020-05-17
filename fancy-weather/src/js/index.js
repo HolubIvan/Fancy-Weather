@@ -30,8 +30,10 @@ import {languageOpenCloseMenu, changeLanguage} from './languageChange';
 import Weather from './Weather';
 import initMapOnLayout from './map';
 import getTimeZone from './timezone';
-import {changeActiveTemperatureStyle} from './temperatureConversion';
+import {changeActiveTemperatureStyle} from './temperatureBlockStyle';
 import audioCitySearch from './audioSearch';
+import {weatherIcons} from "./weatherIcons";
+import getIcons from './getIcon';
 
 export {getWeatherAndRenderToDom};
 
@@ -41,11 +43,14 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 microphone.addEventListener('click', audioCitySearch);
 
 
+
 // get random background to wrapper when arrows button clicked
 changeBackgroundArrows.addEventListener('click', async ()=> {
   const background = await getRandomBackground();
   wrapper.style.backgroundImage = `url(${background})`;
 })
+
+
 
 // MAIN FUNCTION to get weather and render by class to DOM
 const getWeatherAndRenderToDom = async (location)=>{
@@ -53,9 +58,11 @@ const getWeatherAndRenderToDom = async (location)=>{
   const temperatureUnit = temperatureButton.getAttribute('active'); // celsius or fahrenheit
   const currentWeather = await getWeather(location, language, temperatureUnit);  // get weather obj with latitude, longitude, weather details
   const timezone = await getTimeZone(currentWeather); // get timezone by 'Asia/Shanghai' format
-  mainContainer.innerHTML = new Weather(currentWeather, timezone).createWeather(); // create layout and render inside DOM
+  const icons = getIcons(currentWeather, weatherIcons); // get icon from icon object with svg icons
+  mainContainer.innerHTML = new Weather(currentWeather, timezone, icons).createWeather(); // create layout and render inside DOM
   initMapOnLayout(currentWeather);
 }
+
 
 
 // change temperature units
@@ -85,6 +92,7 @@ temperatureButton.addEventListener('click', async (event)=>{
 
 
 
+
 // Open or Close language menu and change styles
 languageChangeWrapper.addEventListener('click', ()=>{
     languageOpenCloseMenu();
@@ -101,12 +109,14 @@ languageChangeButtons.addEventListener('click', (event)=>{
 }) 
 
 
+// search input handler
 buttonCitySearch.addEventListener('click', async (event)=>{
   event.preventDefault();
   const input = inputCitySearch.value;
   await getWeatherAndRenderToDom(input);
 })
 
+// get weather by current location
 window.addEventListener('load', async ()=>{
   const location = await currentLocation();
   await getWeatherAndRenderToDom(location);

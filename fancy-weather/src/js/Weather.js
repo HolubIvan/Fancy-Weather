@@ -1,5 +1,5 @@
 export default class Weather{
-  constructor(data, timezone){
+  constructor(data, timezone, icons){
     this.city = data.city.name;
     this.country = data.city.country;
     this.date = new Date();
@@ -10,7 +10,7 @@ export default class Weather{
     this.humidity = data.list[0].main.humidity;
     this.latitude = data.city.coord.lat;
     this.longitude = data.city.coord.lon;
-    this.icon = data.list[0].weather[0].icon;
+    this.icons = icons;
     this.tempTomorrow = data.list[8].main.temp;
     this.tempAfterTomorrow = data.list[16].main.temp;
     this.tempIn2Days = data.list[24].main.temp;
@@ -29,7 +29,7 @@ export default class Weather{
                               </p>
                           </div>
                           <p class="current__temperature">${this.currentTemperature.toFixed()}</p>
-                          <img class="current__icon" src="http://openweathermap.org/img/wn/${this.icon}@2x.png" alt="cloud">
+                          <div class="current__icon">${this.icons[0]}</div>
                           <div class="current__details details">
                               <p class="details__clouds">OVERCAST</p>
                               <p class="details__feels">FEELS LIKE: ${Math.round(this.feels)}&#176;</p>
@@ -43,19 +43,19 @@ export default class Weather{
                           <div class="forecast">
                               <p class="forecast__day">${this.dayTomorrow}</p>
                               <p class="forecast__temperature">${this.tempTomorrow.toFixed()}&#176;</p>
-                              <img class="forecast__img" src="./img/cloud.png" alt="icon">
+                              <div class="forecast__img">${this.icons[1]}</div>
                           </div>
 
                           <div class="forecast">
                               <p class="forecast__day">${this.dayAfterTomorrow}</p>
                               <p class="forecast__temperature">${this.tempAfterTomorrow.toFixed()}&#176;</p>
-                              <img class="forecast__img" src="./img/cloud.png" alt="icon">
+                              <div class="forecast__img">${this.icons[2]}</div>
                           </div>
 
                           <div class="forecast">
                               <p class="forecast__day">${this.dayIn2Days}</p>
                               <p class="forecast__temperature">${this.tempIn2Days.toFixed()}&#176;</p>
-                              <img class="forecast__img" src="./img/cloud.png" alt="icon">
+                              <div class="forecast__img">${this.icons[3]}</div>
                           </div>
 
 
