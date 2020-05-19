@@ -6,10 +6,13 @@ import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHe
 //   setInterval(setRunningTime.bind(null, timezone) ,1000);
 // }
 
-export default function setRunningTime(timezone, lang){
-  setInterval(() => {
+export default function setRunningTime(timezoneAndCountry, lang){
+  // setInterval(() => {
+  //   const date = new Date();
+  //   const update = date.toLocaleString(`${lang}-${lang.toUpperCase()}`,{ weekday: 'short',  day: 'numeric' ,month: 'long' ,hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: timezoneAndCountry.timezoneId, hour12: false});
+  //   document.querySelector('.current__date').innerHTML = update;
+  // }, 1000);
     const date = new Date();
-    const update = date.toLocaleString(`${lang}-${lang.toUpperCase()}`,{ weekday: 'short',  day: 'numeric' ,month: 'long' ,hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: timezone, hour12: false});
+    const update = date.toLocaleString(`${lang}-${lang.toUpperCase()}`,{ weekday: 'short',  day: 'numeric' ,month: 'long' ,hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: timezoneAndCountry.timezoneId, hour12: false});
     document.querySelector('.current__date').innerHTML = update;
-  }, 1000);
 }

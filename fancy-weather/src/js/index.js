@@ -29,13 +29,14 @@ import getRandomBackground from './randomPhotoBackground';
 import {languageOpenCloseMenu, changeLanguage} from './languageChange';
 import Weather from './Weather';
 import initMapOnLayout from './map';
-import getTimeZone from './timezone';
+import getTimeZoneAndCountry from './timezoneAndCountry';
 import {changeActiveTemperatureStyle} from './temperatureBlockStyle';
 import audioCitySearch from './audioSearch';
 import {weatherIcons} from "./weatherIcons";
 import getIcons from './getIcon';
 import {setUserTemperatureSettings, setUserLangSettings} from './userSettings';
 import setRunningTime from './setTime';
+import {translateEngToBel, translateRusToBel} from './translation';
 
 export {getWeatherAndRenderToDom};
 
@@ -59,10 +60,18 @@ const getWeatherAndRenderToDom = async (location)=>{
   const language = localStorage.getItem('lang');
   const temperature = localStorage.getItem('temperature'); // celsius or fahrenheit
   const currentWeather = await getWeather(location, language, temperature);  // get weather obj with latitude, longitude, weather details
-  const timezone = await getTimeZone(currentWeather); // get timezone by 'Asia/Shanghai' format
+  const timezoneAndCountry = await getTimeZoneAndCountry(currentWeather, language); // get timezone by 'Asia/Shanghai' format
   const icons = getIcons(currentWeather, weatherIcons); // get icon from icon object with svg icons by currentWeather id icon
-  mainContainer.innerHTML = new Weather(currentWeather, timezone, icons).createWeather(); // create layout and render inside DOM
-  setRunningTime(timezone, language); // render running time to layout
+
+  if(localStorage.getItem('lang') === 'en'){
+    mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language).createWeatherEng(); // create layout and render inside DOM
+  } else if (localStorage.getItem('lang') === 'ru'){
+    mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language).createWeatherRus(); // create layout and render inside DOM
+  } else if(localStorage.getItem('lang') === 'be'){
+    mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language).createWeatherBel(); // create layout and render inside DOM
+  }
+
+  setRunningTime(timezoneAndCountry, language); // render running time to layout
   initMapOnLayout(currentWeather); // init map by coordinates from weather object
 }
 
@@ -102,14 +111,16 @@ languageChangeWrapper.addEventListener('click', ()=>{
     languageOpenCloseMenu();
 });
 
-languageChangeButtons.addEventListener('click', (event)=>{
+languageChangeButtons.addEventListener('click', async (event)=>{
   event.preventDefault();
   changeLanguage(event);
-  // if(inputCitySearch.value === ''){
-    
-  // } else {
-    
-  // }
+  if(inputCitySearch.value === ''){
+    const location = await currentLocation();
+    await getWeatherAndRenderToDom(location);
+  } else {
+    const input = inputCitySearch.value;
+    await getWeatherAndRenderToDom(input);
+  }
 }) 
 
 
