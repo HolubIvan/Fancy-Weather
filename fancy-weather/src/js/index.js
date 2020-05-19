@@ -22,7 +22,7 @@ import '../css/themes/_default.scss';
 
 // JS MODULES
 
-import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone} from './variables';
+import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate} from './variables';
 import currentLocation from './location';
 import getWeather from './getWeather';
 import getRandomBackground from './randomPhotoBackground';
@@ -35,6 +35,7 @@ import audioCitySearch from './audioSearch';
 import {weatherIcons} from "./weatherIcons";
 import getIcons from './getIcon';
 import {setUserTemperatureSettings, setUserLangSettings} from './userSettings';
+import setRunningTime from './setTime';
 
 export {getWeatherAndRenderToDom};
 
@@ -61,6 +62,7 @@ const getWeatherAndRenderToDom = async (location)=>{
   const timezone = await getTimeZone(currentWeather); // get timezone by 'Asia/Shanghai' format
   const icons = getIcons(currentWeather, weatherIcons); // get icon from icon object with svg icons by currentWeather id icon
   mainContainer.innerHTML = new Weather(currentWeather, timezone, icons).createWeather(); // create layout and render inside DOM
+  setRunningTime(timezone, language); // render running time to layout
   initMapOnLayout(currentWeather); // init map by coordinates from weather object
 }
 

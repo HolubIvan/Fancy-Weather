@@ -25,8 +25,7 @@ export default class Weather{
                       <div class="weather__current current">
                           <div class="current__info">
                               <h2 class="current__city">${this.city}, ${this.country}</h2>
-                              <p class="current__date">${this.date.toLocaleString('en-EN',{ weekday: 'short',  day: 'numeric' ,month: 'long' ,hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: this.timezone, hour12: false})}
-                              </p>
+                              <p class="current__date"></p>
                           </div>
                           <p class="current__temperature">${this.currentTemperature.toFixed()}</p>
                           <div class="current__icon">${this.icons[0]}</div>
@@ -77,3 +76,7 @@ export default class Weather{
     return layout;
   }
 }
+
+
+
+// ${this.date.toLocaleString('en-EN',{ weekday: 'short',  day: 'numeric' ,month: 'long' ,hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: this.timezone, hour12: false})}
