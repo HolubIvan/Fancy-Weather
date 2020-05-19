@@ -1,7 +1,9 @@
 import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone} from './variables';
 import {getWeatherAndRenderToDom} from './index';
-
+import {timer} from './index';
+ 
 export default function audioCitySearch () {
+  clearInterval(timer);
   // eslint-disable-next-line global-require
   const path = require('./../audio/audioQuestion.mp3');
   const audio = new Audio(path);

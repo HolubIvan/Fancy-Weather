@@ -1,6 +1,7 @@
-export {overcastCodesBelLang};
+export {belTranslation};
 
-const overcastCodesBelLang = {
+const belTranslation = {
+  overcastCodesBelLang: {
     "200": "Навальніца з нябесным дажджом",
     "201": "Навальніца з дажджом",
     "202": "Навальніца з праліўным дажджом",
@@ -38,4 +39,14 @@ const overcastCodesBelLang = {
     "803": "Хмары",
     "804": "Пахмурна",
     "900": "Невядомыя ападкі"
+  },
+  days: {
+    "Monday": "Панядзелак",
+    "Tuesday": "Аўторак",
+    "Wednesday": "Серада",
+    "Thursday": "Чацвер",
+    "Friday": "Пятніца",
+    "Saturday": "Субота",
+    "Sunday": "Нядзеля"
+  }
 };

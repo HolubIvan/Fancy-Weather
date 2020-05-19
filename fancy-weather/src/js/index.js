@@ -22,12 +22,12 @@ import '../css/themes/_default.scss';
 
 // JS MODULES
 
-import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate} from './variables';
+import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate, currentCity} from './variables';
 import currentLocation from './location';
 import getWeather from './getWeather';
 import getRandomBackground from './randomPhotoBackground';
 import {languageOpenCloseMenu, changeLanguage} from './languageChange';
-import Weather from './Weather';
+import {Weather, WeatherBel} from './Weather';
 import initMapOnLayout from './map';
 import getTimeZoneAndCountry from './timezoneAndCountry';
 import {changeActiveTemperatureStyle} from './temperatureBlockStyle';
@@ -36,10 +36,11 @@ import {weatherIcons} from "./weatherIcons";
 import getIcons from './getIcon';
 import {setUserTemperatureSettings, setUserLangSettings} from './userSettings';
 import setRunningTime from './setTime';
+import {belTranslation} from './belTranslation';
 import {translateEngToBel, translateRusToBel} from './translation';
 
 export {getWeatherAndRenderToDom};
-
+export {timer};
 
 // audio search handler
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -54,24 +55,39 @@ changeBackgroundArrows.addEventListener('click', async ()=> {
 })
 
 
+ var timer;
 
 // MAIN FUNCTION to get weather and render by class to DOM
 const getWeatherAndRenderToDom = async (location)=>{
+
+  // translate to Belarusian
+  var cityTranslation;
+  if (/^[a-zA-Z]+$/.test(location)){
+    cityTranslation = await translateEngToBel(location);
+  } else if (/^[а-яА-Я]+$/.test(location)){
+    cityTranslation = await translateRusToBel(location);
+  }
+
   const language = localStorage.getItem('lang');
   const temperature = localStorage.getItem('temperature'); // celsius or fahrenheit
   const currentWeather = await getWeather(location, language, temperature);  // get weather obj with latitude, longitude, weather details
   const timezoneAndCountry = await getTimeZoneAndCountry(currentWeather, language); // get timezone by 'Asia/Shanghai' format
   const icons = getIcons(currentWeather, weatherIcons); // get icon from icon object with svg icons by currentWeather id icon
 
+
   if(localStorage.getItem('lang') === 'en'){
     mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language).createWeatherEng(); // create layout and render inside DOM
+
   } else if (localStorage.getItem('lang') === 'ru'){
     mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language).createWeatherRus(); // create layout and render inside DOM
-  } else if(localStorage.getItem('lang') === 'be'){
-    mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language).createWeatherBel(); // create layout and render inside DOM
-  }
 
-  setRunningTime(timezoneAndCountry, language); // render running time to layout
+  } else if(localStorage.getItem('lang') === 'be'){
+    mainContainer.innerHTML = new WeatherBel(currentWeather, timezoneAndCountry, icons, language, belTranslation, cityTranslation).createWeatherBel(); // create layout and render inside DOM
+  }
+   timer = setInterval(() => {
+    setRunningTime(timezoneAndCountry, language);  // render running time to layout
+  }, 1000);
+
   initMapOnLayout(currentWeather); // init map by coordinates from weather object
 }
 
@@ -81,6 +97,7 @@ const getWeatherAndRenderToDom = async (location)=>{
 temperatureButton.addEventListener('click', async (event)=>{
   event.preventDefault();
   changeActiveTemperatureStyle(event);
+  clearInterval(timer);
   if(event.target.getAttribute('data') === 'fahrenheit'){
     localStorage.setItem('temperature', 'imperial');
     if(inputCitySearch.value === ''){
@@ -114,6 +131,7 @@ languageChangeWrapper.addEventListener('click', ()=>{
 languageChangeButtons.addEventListener('click', async (event)=>{
   event.preventDefault();
   changeLanguage(event);
+  clearInterval(timer);
   if(inputCitySearch.value === ''){
     const location = await currentLocation();
     await getWeatherAndRenderToDom(location);
@@ -128,6 +146,7 @@ languageChangeButtons.addEventListener('click', async (event)=>{
 buttonCitySearch.addEventListener('click', async (event)=>{
   event.preventDefault();
   const input = inputCitySearch.value;
+  clearInterval(timer);
   await getWeatherAndRenderToDom(input);
 })
 
@@ -135,6 +154,7 @@ buttonCitySearch.addEventListener('click', async (event)=>{
 window.addEventListener('load', async ()=>{
   setUserTemperatureSettings();
   setUserLangSettings();
+  clearInterval(timer);
   const location = await currentLocation();
   await getWeatherAndRenderToDom(location);
 })

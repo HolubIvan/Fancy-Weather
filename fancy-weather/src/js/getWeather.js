@@ -6,7 +6,6 @@ export default async function getWeather(city, lang = 'en', units = 'metric'){
   try{
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data)
     return data;
   }catch(error){
     // eslint-disable-next-line no-console
