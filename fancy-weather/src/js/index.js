@@ -59,9 +59,9 @@ const getWeatherAndRenderToDom = async (location)=>{
   const temperature = localStorage.getItem('temperature'); // celsius or fahrenheit
   const currentWeather = await getWeather(location, language, temperature);  // get weather obj with latitude, longitude, weather details
   const timezone = await getTimeZone(currentWeather); // get timezone by 'Asia/Shanghai' format
-  const icons = getIcons(currentWeather, weatherIcons); // get icon from icon object with svg icons
+  const icons = getIcons(currentWeather, weatherIcons); // get icon from icon object with svg icons by currentWeather id icon
   mainContainer.innerHTML = new Weather(currentWeather, timezone, icons).createWeather(); // create layout and render inside DOM
-  initMapOnLayout(currentWeather);
+  initMapOnLayout(currentWeather); // init map by coordinates from weather object
 }
 
 
