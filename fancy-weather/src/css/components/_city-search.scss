@@ -56,7 +56,7 @@
         top: 2px;
         right: 92px;
         width: 35px;
-        opacity: .7;
+        opacity: .6;
         transition: all .3s;
         cursor: pointer;
         z-index: 30;
@@ -77,4 +77,13 @@
 
 .city-search__microphone:hover{
     opacity: 1;
+}
+
+.error{
+    position: absolute;
+    top: 50px;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #fff;
+    text-transform: uppercase;
 }

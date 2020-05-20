@@ -22,7 +22,7 @@ import '../css/themes/_default.scss';
 
 // JS MODULES
 
-import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate, currentCity} from './variables';
+import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate, currentCity, cityError} from './variables';
 import currentLocation from './location';
 import getWeather from './getWeather';
 import {changeBackground} from './randomPhotoBackground';

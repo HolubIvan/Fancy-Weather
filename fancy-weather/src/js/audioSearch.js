@@ -4,6 +4,9 @@ import {timer} from './index';
  
 export default function audioCitySearch () {
   clearInterval(timer);
+
+  microphone.style.transform = 'scale(1.15)';
+  microphone.style.opacity = '1';
   // eslint-disable-next-line global-require
   const path = require('./../audio/audioQuestion.mp3');
   const audio = new Audio(path);
@@ -19,6 +22,10 @@ export default function audioCitySearch () {
         .map(el => el[0])
         .map(el => el.transcript)
         .join('');
+
+        microphone.style.transform = 'scale(1)';
+        microphone.style.opacity = '.6';
+
         inputCitySearch.value = transcript;
         getWeatherAndRenderToDom(transcript);
     }
