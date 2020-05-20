@@ -25,7 +25,7 @@ import '../css/themes/_default.scss';
 import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate, currentCity} from './variables';
 import currentLocation from './location';
 import getWeather from './getWeather';
-import getRandomBackground from './randomPhotoBackground';
+import {changeBackground} from './randomPhotoBackground';
 import {languageOpenCloseMenu, changeLanguage} from './languageChange';
 import {Weather, WeatherBel} from './Weather';
 import initMapOnLayout from './map';
@@ -49,10 +49,15 @@ microphone.addEventListener('click', audioCitySearch);
 
 
 // get random background to wrapper when arrows button clicked
-changeBackgroundArrows.addEventListener('click', async ()=> {
-  const background = await getRandomBackground();
-  wrapper.style.backgroundImage = `url(${background})`;
-})
+changeBackgroundArrows.addEventListener('click', async ()=>{
+  if(inputCitySearch.value === ''){
+    const location = await currentLocation();
+    await changeBackground(location);
+  } else {
+    const input = inputCitySearch.value;
+    await changeBackground(input);
+  }
+});
 
 
  var timer;
@@ -146,6 +151,7 @@ languageChangeButtons.addEventListener('click', async (event)=>{
 buttonCitySearch.addEventListener('click', async (event)=>{
   event.preventDefault();
   const input = inputCitySearch.value;
+  // await changeBackground(input);
   clearInterval(timer);
   await getWeatherAndRenderToDom(input);
 })
@@ -156,5 +162,6 @@ window.addEventListener('load', async ()=>{
   setUserLangSettings();
   clearInterval(timer);
   const location = await currentLocation();
+  // changeBackground(location);
   await getWeatherAndRenderToDom(location);
 })
