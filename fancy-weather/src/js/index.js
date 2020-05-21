@@ -17,12 +17,13 @@ import '../css/components/_arrow-block.scss';
 import '../css/components/_language.scss';
 import '../css/components/_temperature.scss';
 import '../css/components/_city-search.scss';
+import '../css/components/_audio-information.scss';
 import '../css/pages/_home.scss';
 import '../css/themes/_default.scss';
 
 // JS MODULES
 
-import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate, currentCity, cityError} from './variables';
+import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch, temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate, currentCity, cityError, audioForecastButton} from './variables';
 import currentLocation from './location';
 import getWeather from './getWeather';
 import {changeBackground} from './randomPhotoBackground';
@@ -38,6 +39,7 @@ import {setUserTemperatureSettings, setUserLangSettings} from './userSettings';
 import setRunningTime from './setTime';
 import {belTranslation} from './belTranslation';
 import {translateEngToBel, translateRusToBel} from './translation';
+import audioForecast from './audioForecast';
 
 export {getWeatherAndRenderToDom};
 export {timer};
@@ -46,6 +48,12 @@ export {timer};
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 microphone.addEventListener('click', audioCitySearch);
 
+
+// audio forecast handler
+audioForecastButton.addEventListener('click', ()=>{
+  const language = localStorage.getItem('lang');
+  audioForecast(language);
+})
 
 
 // get random background to wrapper when arrows button clicked

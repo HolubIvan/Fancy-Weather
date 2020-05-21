@@ -1,0 +1,18 @@
+@import './../abstracts/variables';
+
+.audio-information{
+    width: 100px;
+    height: 45px;
+    background-color: $color-blue;
+    border-radius: 6px;
+    font-size: 2rem;
+    color: $color-white;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+    transition: all .4s;
+}
+
+.audio-information:hover{
+    background-color: $color-orange;
+}

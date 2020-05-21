@@ -8,7 +8,7 @@ export default async function getWeather(city, lang = 'en', units = 'metric'){
   try{
     const response = await fetch(url);
     const data = await response.json();
-
+    console.log(data)
     if(data.cod === '404'){
       console.log(`Error: code: ${data.cod}, massage: ${data.message}`);
       cityError.textContent = data.message;

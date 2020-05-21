@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-use-before-define
-export {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch, temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate, currentCity, cityError};
+export {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch, temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate, currentCity, cityError, audioForecastButton};
 
 const wrapper = document.querySelector('.wrapper');
 const mainContainer = document.querySelector('.main');
@@ -18,3 +18,4 @@ const microphone = document.querySelector('.city-search__microphone');
 const currentDate = document.querySelector('.current__date');
 const currentCity = document.querySelector('.current__city');
 const cityError = document.querySelector('.error');
+const audioForecastButton = document.querySelector('.audio-information');
