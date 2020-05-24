@@ -44,6 +44,9 @@ import audioForecast from './audioForecast';
 export {getWeatherAndRenderToDom};
 export {timer};
 
+// set timer variable as global
+var timer;
+
 // audio search handler
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 microphone.addEventListener('click', audioCitySearch);
@@ -68,8 +71,6 @@ changeBackgroundArrows.addEventListener('click', async ()=>{
 });
 
 
- var timer;
-
 // MAIN FUNCTION to get weather and render by class to DOM
 const getWeatherAndRenderToDom = async (location)=>{
 
@@ -89,12 +90,15 @@ const getWeatherAndRenderToDom = async (location)=>{
 
 
   if(localStorage.getItem('lang') === 'en'){
+    audioForecastButton.textContent = 'Listen';
     mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language).createWeatherEng(); // create layout and render inside DOM
 
   } else if (localStorage.getItem('lang') === 'ru'){
+    audioForecastButton.textContent = 'Слушать';
     mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language).createWeatherRus(); // create layout and render inside DOM
 
   } else if(localStorage.getItem('lang') === 'be'){
+    audioForecastButton.textContent = 'Слухайце';
     mainContainer.innerHTML = new WeatherBel(currentWeather, timezoneAndCountry, icons, language, belTranslation, cityTranslation).createWeatherBel(); // create layout and render inside DOM
   }
    timer = setInterval(() => {

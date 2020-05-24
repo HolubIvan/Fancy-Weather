@@ -1,16 +1,30 @@
 @import './../abstracts/variables';
+@import './../abstracts/mixins';
 
 .audio-information{
     width: 100px;
     height: 45px;
     background-color: $color-blue;
     border-radius: 6px;
-    font-size: 2rem;
+    font-size: 1.7rem;
     color: $color-white;
     text-align: center;
     line-height: 45px;
     cursor: pointer;
     transition: all .4s;
+    text-transform: uppercase;
+
+    @include media-tablet {
+        grid-row: 1/2;
+    }
+    @include media-mobile {
+        width: 70px;
+        font-size: 1.4rem;
+        margin-left: 18px;
+    }
+    @include media-mobile {
+        margin-left: 5px;
+    }
 }
 
 .audio-information:hover{

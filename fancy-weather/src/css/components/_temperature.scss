@@ -1,4 +1,5 @@
 @import './../abstracts/variables';
+@import './../abstracts/mixins';
 
 .temperature {
     width: 90px;
@@ -26,6 +27,14 @@
         border: none;
         cursor: default;
         outline: none;
+    }
+
+    @include media-tablet {
+        grid-row: 1/2;
+        margin-right: 12px;
+    }
+    @include media-mobile {
+        margin-right: 5px;
     }
 }
 

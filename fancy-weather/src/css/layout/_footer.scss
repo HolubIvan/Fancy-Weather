@@ -1,4 +1,6 @@
 @import './../abstracts/variables';
+@import './../abstracts/mixins';
+
 
 .footer{
 
@@ -14,6 +16,15 @@
         color: $color-white;
         position: absolute;
         right: 13%;
+
+        @include media-tablet {
+           right: 55%;
+           bottom: 1rem;
+        }
+        @include media-mobile {
+           left: 20%;
+           bottom: 1rem;
+        }
     }
 
     &__git{
@@ -21,5 +32,15 @@
         color: $color-white;
         position: absolute;
         right: 4%;
+
+        @include media-tablet {
+           right: 40%;
+           bottom: 1rem;
+        }
+        @include media-mobile {
+           right: 20%;
+           bottom: 1rem;
+        }
     }
+    
 }

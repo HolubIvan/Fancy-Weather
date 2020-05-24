@@ -1,3 +1,6 @@
+@import './../abstracts/variables';
+@import './../abstracts/mixins';
+
 *,
 *::after,
 *::before {
@@ -23,4 +26,12 @@ body {
     background-image: url('./../../img/forest.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    // background: url('./../../img/forest.jpg') center center no-repeat fixed;
+
+    @include media-tablet {
+        padding-top: 2rem;
+        height: auto;
+    }
 }

@@ -20,7 +20,7 @@ async function getRandomBackground(location){
 async function changeBackground(location){
   const background = await getRandomBackground(location);
   if(background === undefined){
-    wrapper.style.backgroundImage = `url('./../img/forest.jpg')`;
+    wrapper.style.backgroundImage = `url('./../../img/forest.jpg')`;
   } else {
     wrapper.style.backgroundImage = `url(${background})`;
   }
