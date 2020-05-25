@@ -23,11 +23,11 @@ body {
     max-width: 1440px;
     height: 100vh;
     margin: 0 auto;
-    background-image: url('./../../img/forest.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    // background-image: url('./../../img/forest.jpg');
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center;
+    // background-attachment: fixed;
     // background: url('./../../img/forest.jpg') center center no-repeat fixed;
 
     @include media-tablet {

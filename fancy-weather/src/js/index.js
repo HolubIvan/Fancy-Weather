@@ -63,10 +63,10 @@ audioForecastButton.addEventListener('click', ()=>{
 changeBackgroundArrows.addEventListener('click', async ()=>{
   if(inputCitySearch.value === ''){
     const location = await currentLocation();
-    await changeBackground(location);
+    await changeBackground();
   } else {
     const input = inputCitySearch.value;
-    await changeBackground(input);
+    await changeBackground();
   }
 });
 
@@ -163,9 +163,9 @@ languageChangeButtons.addEventListener('click', async (event)=>{
 buttonCitySearch.addEventListener('click', async (event)=>{
   event.preventDefault();
   const input = inputCitySearch.value;
-  // await changeBackground(input);
   clearInterval(timer);
   await getWeatherAndRenderToDom(input);
+  await changeBackground();
 })
 
 // get weather by current location
@@ -174,6 +174,6 @@ window.addEventListener('load', async ()=>{
   setUserLangSettings();
   clearInterval(timer);
   const location = await currentLocation();
-  // changeBackground(location);
   await getWeatherAndRenderToDom(location);
+  await changeBackground();
 })
