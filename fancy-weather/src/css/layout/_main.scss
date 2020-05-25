@@ -13,7 +13,10 @@
         grid-template-rows: 1fr 450px;
     }
     @include media-mobile {
-        grid-template-rows: 1230px 390px;
+        grid-template-rows: 1260px 450px;
+        grid-template-columns: 1fr;
+        width: 300px;
+        margin: 0 auto;
     }
 }
 
@@ -26,7 +29,7 @@
         width: 100%;
         height: 450px;
         @include media-mobile {
-            height: 840px;
+            height: 900px;
         }
         
     }
@@ -43,6 +46,7 @@
         @include media-mobile {
             width: 200px;
             margin: 0 auto;
+            height: 370px;
         }
     }
 
@@ -73,7 +77,7 @@
 
     &__info{
         font-style: normal;
-        font-family: Lato-Thin;
+        font-family: Montserrat-Bold;
         text-transform: uppercase;
         padding: 50px 10px 20px;
         line-height: 57px;
@@ -90,12 +94,15 @@
     &__city{
         font-size: 5.4rem;
         margin-left: 3rem;
-        white-space: nowrap;
+        overflow-wrap: anywhere;
+        font-family: Montserrat-Bold;
+
         @include media-mobile {
             font-size: 4.4rem;
         }
         @include media-mobile {
             margin-left: 0;
+            font-size: 3rem;
         }
     }
 
@@ -104,18 +111,19 @@
         margin-left: 3rem;
         @include media-mobile {
             margin-left: 0;
+            font-size: 2rem;
         }
     }
 
     &__temperature{
         font-size: 30rem;
-        font-family: Lato-Bold;
+        font-family: Montserrat-Bold;
         position: absolute;
-        top: 25%;
+        top: 35%;
         left: 10%;
         @include media-laptop-small {
-            top: 37%;
-            font-size: 25rem;
+            top: 42%;
+            font-size: 23rem;
         }
         @include media-mobile {
             text-align: center;
@@ -146,13 +154,14 @@
 
     &__details{
         position: absolute;
-        top: 60%;
-        right: -2rem;
+        top: 55%;
+        right: -4rem;
         font-size: 2.2rem;
         color: $color-white;
-        font-family: Lato-Thin;
+        font-family: Montserrat-Bold;
         line-height: 37px;
         text-transform: uppercase;
+        width: 260px;
 
         @include media-laptop-small {
             right: -8%;
@@ -162,7 +171,11 @@
             position: static;
             width: 220px;
             text-align: center;
-            font-size: 3.2rem;
+            font-size: 2.2rem;
+
+            & > * {
+                margin-top: 1rem;
+            }
         }
     }
 }
@@ -175,7 +188,7 @@
     position: relative;
 
     &__day{
-        font-family: Lato-Thin;
+        font-family: Montserrat-Regular;
         font-size: 2.2rem;
         line-height: 2.7rem;
         text-transform: uppercase;
@@ -186,7 +199,7 @@
 
     &__temperature{
         font-style: normal;
-        font-family: Lato-Bold;
+        font-family: Montserrat-Bold;
         font-size: 80px;
         line-height: 98px;
         text-transform: uppercase;
@@ -215,9 +228,9 @@
         position: absolute;
         left: 21%;
         bottom: 17%;
-        font-size: 2.4rem;
+        font-size: 2.2rem;
         color: $color-white;
-        font-family: Lato-Thin;
+        font-family: Montserrat-Regular;
 
         @include media-laptop-small {
             left: 17%;
@@ -230,8 +243,9 @@
         }
          @include media-mobile {
             font-size: 1.6rem;
-            bottom: 12% !important;
-            left: 26%!important;
+            bottom: 18% !important;
+            left: 5%!important;
+            font-family: Montserrat-Bold;
         }
     }
 }
@@ -255,6 +269,7 @@
     @include media-mobile {
         width: 30rem !important;
         height: 32rem !important;
+        margin-top: 3rem;
     }
 
 }
