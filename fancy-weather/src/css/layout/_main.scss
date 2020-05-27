@@ -13,7 +13,7 @@
         grid-template-rows: 1fr 450px;
     }
     @include media-mobile {
-        grid-template-rows: 1260px 450px;
+        grid-template-rows: 1300px 450px;
         grid-template-columns: 1fr;
         width: 300px;
         margin: 0 auto;
@@ -29,7 +29,7 @@
         width: 100%;
         height: 450px;
         @include media-mobile {
-            height: 900px;
+            height: 880px;
         }
         
     }
@@ -46,7 +46,7 @@
         @include media-mobile {
             width: 200px;
             margin: 0 auto;
-            height: 370px;
+            height: 420px;
         }
     }
 
