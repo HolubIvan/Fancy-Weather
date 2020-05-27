@@ -1,7 +1,7 @@
 // get timezone by 'Asia/Shanghai' format
 
 // eslint-disable-next-line consistent-return
-export default async function getTimeZone(obj, language){
+export default async function getTimeZone(obj){
   const url = `https://dev.virtualearth.net/REST/v1/timezone/${obj.city.coord.lat},${obj.city.coord.lon}?key=AhcCkVUojoZHAmg5bDb27HfR1SkSHssFDfBCVbE_kfqhtxY4qH2pioFcY3qNbGUF`;
   try{
     const response = await fetch(url);

@@ -2,9 +2,9 @@ import getHighestTemperatureOfTheDay from './highestTemperature';
 export {Weather, WeatherBel};
 
 export default class Weather{
-  constructor(data, timezoneAndCountry, icons, language){
+  constructor(data, timezoneAndCountry, icons, language, countryName){
     this.city = data.city.name;
-    this.country = data.city.country;
+    this.country = countryName;
     this.date = new Date();
     this.language = language;
     this.overcast = data.list[0].weather[0].description;
@@ -147,8 +147,8 @@ export default class Weather{
 
 
 class WeatherBel extends Weather{
-  constructor(data, timezoneAndCountry, icons, language, belTranslation, cityTranslation){
-    super(data, timezoneAndCountry, icons, language);
+  constructor(data, timezoneAndCountry, icons, language, belTranslation, countryName, cityTranslation){
+    super(data, timezoneAndCountry, icons, language, countryName);
     this.belTranslation = belTranslation;
     this.cityTranslation = cityTranslation;
     this.dayTomorrowEng = new Date(data.list[8].dt_txt).toLocaleString('en-EN',{ weekday: 'long' });

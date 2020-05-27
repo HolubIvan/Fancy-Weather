@@ -40,6 +40,7 @@ import setRunningTime from './setTime';
 import {belTranslation} from './belTranslation';
 import {translateEngToBel, translateRusToBel} from './translation';
 import audioForecast from './audioForecast';
+import getCountryName from './getCountryName';
 
 export {getWeatherAndRenderToDom};
 export {timer};
@@ -85,21 +86,22 @@ const getWeatherAndRenderToDom = async (location)=>{
   const language = localStorage.getItem('lang');
   const temperature = localStorage.getItem('temperature'); // celsius or fahrenheit
   const currentWeather = await getWeather(location, language, temperature);  // get weather obj with latitude, longitude, weather details
+  const countryName = await getCountryName(currentWeather, localStorage.getItem('lang'));
   const timezoneAndCountry = await getTimeZone(currentWeather, language); // get timezone by 'Asia/Shanghai' format
   const icons = getIcons(currentWeather, weatherIcons); // get icon from icon object with svg icons by currentWeather id icon
 
 
   if(localStorage.getItem('lang') === 'en'){
     audioForecastButton.textContent = 'Listen';
-    mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language).createWeatherEng(); // create layout and render inside DOM
+    mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language, countryName).createWeatherEng(); // create layout and render inside DOM
 
   } else if (localStorage.getItem('lang') === 'ru'){
     audioForecastButton.textContent = 'Слушать';
-    mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language).createWeatherRus(); // create layout and render inside DOM
+    mainContainer.innerHTML = new Weather(currentWeather, timezoneAndCountry, icons, language, countryName).createWeatherRus(); // create layout and render inside DOM
 
   } else if(localStorage.getItem('lang') === 'be'){
     audioForecastButton.textContent = 'Слухайце';
-    mainContainer.innerHTML = new WeatherBel(currentWeather, timezoneAndCountry, icons, language, belTranslation, cityTranslation).createWeatherBel(); // create layout and render inside DOM
+    mainContainer.innerHTML = new WeatherBel(currentWeather, timezoneAndCountry, icons, language, belTranslation, countryName, cityTranslation).createWeatherBel(); // create layout and render inside DOM
   }
    timer = setInterval(() => {
     setRunningTime(timezoneAndCountry, language);  // render running time to layout
