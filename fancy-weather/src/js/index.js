@@ -30,7 +30,7 @@ import {changeBackground} from './randomPhotoBackground';
 import {languageOpenCloseMenu, changeLanguage} from './languageChange';
 import {Weather, WeatherBel} from './Weather';
 import initMapOnLayout from './map';
-import getTimeZoneAndCountry from './timezoneAndCountry';
+import getTimeZone from './timezone';
 import {changeActiveTemperatureStyle} from './temperatureBlockStyle';
 import audioCitySearch from './audioSearch';
 import {weatherIcons} from "./weatherIcons";
@@ -85,7 +85,7 @@ const getWeatherAndRenderToDom = async (location)=>{
   const language = localStorage.getItem('lang');
   const temperature = localStorage.getItem('temperature'); // celsius or fahrenheit
   const currentWeather = await getWeather(location, language, temperature);  // get weather obj with latitude, longitude, weather details
-  const timezoneAndCountry = await getTimeZoneAndCountry(currentWeather, language); // get timezone by 'Asia/Shanghai' format
+  const timezoneAndCountry = await getTimeZone(currentWeather, language); // get timezone by 'Asia/Shanghai' format
   const icons = getIcons(currentWeather, weatherIcons); // get icon from icon object with svg icons by currentWeather id icon
 
 

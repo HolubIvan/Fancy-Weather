@@ -1,14 +1,15 @@
+import getHighestTemperatureOfTheDay from './highestTemperature';
 export {Weather, WeatherBel};
 
 export default class Weather{
   constructor(data, timezoneAndCountry, icons, language){
     this.city = data.city.name;
-    this.country = timezoneAndCountry.countryName;
+    this.country = data.city.country;
     this.date = new Date();
     this.language = language;
     this.overcast = data.list[0].weather[0].description;
     this.idOfOvercast = data.list[0].weather[0].id;
-    this.timezone = timezoneAndCountry.timezoneId;
+    this.timezone = timezoneAndCountry;
     this.currentTemperature = data.list[0].main.temp;
     this.feels = data.list[0].main.feels_like;
     this.wind = data.list[0].wind.speed;
@@ -16,9 +17,10 @@ export default class Weather{
     this.latitude = data.city.coord.lat;
     this.longitude = data.city.coord.lon;
     this.icons = icons;
-    this.tempTomorrow = data.list[8].main.temp;
-    this.tempAfterTomorrow = data.list[16].main.temp;
-    this.tempIn2Days = data.list[24].main.temp;
+    // this.tempTomorrow = data.list[8].main.temp;
+    this.tempTomorrow = getHighestTemperatureOfTheDay(data.list)[0];
+    this.tempAfterTomorrow = getHighestTemperatureOfTheDay(data.list)[1];
+    this.tempIn2Days = getHighestTemperatureOfTheDay(data.list)[2];
     this.dayTomorrow = new Date(data.list[8].dt_txt).toLocaleString(`${this.language}-${this.language.toUpperCase()}`,{ weekday: 'long' });
     this.dayAfterTomorrow = new Date(data.list[16].dt_txt).toLocaleString(`${this.language}-${this.language.toUpperCase()}`,{ weekday: 'long' });
     this.dayIn2Days = new Date(data.list[24].dt_txt).toLocaleString(`${this.language}-${this.language.toUpperCase()}`,{ weekday: 'long' });

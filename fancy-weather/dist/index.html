@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Fancy Weather</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
+<link rel="shortcut icon" href="favicon.png"><link href="style.css" rel="stylesheet"></head>
+<body>
+
+    <div class="wrapper">
+        
+        <header class="header">
+
+            <button class="arrows-block">
+                <img class="arrows-block__img" src="img/arrow.png" alt="arrows">
+            </button>
+
+            <div class="language">
+
+                <div class="language__change">
+                    <span class="language__change_lang">EN</span>
+                    <img class="language__change_arrow" src="img/arr-down.png" alt="arrow">
+                </div>
+
+                <div class="language__buttons">
+                    <button type="submit">EN</button>
+                    <button type="submit">RU</button>
+                    <button type="submit">BE</button>
+                </div>
+            </div>
+            
+            <div class="temperature" active="metric">
+                <button type="submit" class="temperature__fahrenheit" data="fahrenheit" >&#8457;</button>
+                <button type="submit" class="temperature__celsius active-temperature" data="celsius" disabled>&#8451;</button>
+            </div>
+
+            <div class="audio-information">Listen</div>
+
+            <form action="index.html" method="get" class="city-search">
+                <input type="text" class="city-search__input" placeholder="Search city or ZIP">
+                <img class="city-search__microphone" src="img/microphone.png" alt="microphone">
+                <button type="submit" class="city-search__button">Search</button>
+                <p class="error"></p>
+            </form>
+
+
+        </header>
+
+        <main class="main">
+            <!-- <div class="weather">
+                
+                <div class="weather__current current">
+                    <div class="current__info">
+                        <h2 class="current__city">Minsk, Belarus</h2>
+                        <p class="current__date">Mon 28 October 17:23</p>
+                    </div>
+                    <p class="current__temperature">10</p>
+                    <img class="current__icon" src="img/cloud.png" alt="cloud">
+                    <div class="current__details details">
+                        <p class="details__clouds">OVERCAST</p>
+                        <p class="details__feels">FEELS LIKE: 7&#176;</p>
+                        <p class="details__wind">WIND: 2 m/s</p>
+                        <p class="details__humidity">HUMIDITY: 83%</p>
+                    </div>
+
+                </div>
+
+                <div class="weather__forecast">
+                    <div class="forecast">
+                        <p class="forecast__day">Wednesday</p>
+                        <p class="forecast__temperature">7&#176;</p>
+                        <img class="forecast__img" src="img/cloud.png" alt="icon">
+                    </div>
+
+                    <div class="forecast">
+                        <p class="forecast__day">Wednesday</p>
+                        <p class="forecast__temperature">7&#176;</p>
+                        <img class="forecast__img" src="img/cloud.png" alt="icon">
+                    </div>
+
+                    <div class="forecast">
+                        <p class="forecast__day">Wednesday</p>
+                        <p class="forecast__temperature">7&#176;</p>
+                        <img class="forecast__img" src="img/cloud.png" alt="icon">
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="location">
+                
+                <div class="location__coordinates">
+                    <p class="location__latitude">
+                        Latitude: 50°54'
+                    </p>
+                    <p class="location__longitude">
+                        Longitude: 55°05'
+                    </p>
+                </div>
+            </div> -->
+
+        </main>
+
+        <footer class="footer">
+            <a href="https://rs.school/" class="footer__rss">RSSchool</a>
+            <a href="https://github.com/HolubIvan" class="footer__git">Holub Ivan</a>
+        </footer>
+    </div>
+<script type="text/javascript" src="index.js"></script></body>
+</html>
