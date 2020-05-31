@@ -1,3 +1,5 @@
+const fetch = require("node-fetch");
+
 import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate, currentCity, cityError} from './variables';
 
 // return object with all weather data and latitude, longitude, city name and else
@@ -8,7 +10,7 @@ export default async function getWeather(city, lang = 'en', units = 'metric'){
   try{
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data)
+    
     if(data.cod === '404'){
       console.log(`Error: code: ${data.cod}, massage: ${data.message}`);
       cityError.textContent = data.message;

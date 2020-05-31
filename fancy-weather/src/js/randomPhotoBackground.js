@@ -1,6 +1,6 @@
 import {wrapper, changeBackgroundArrows, languageChangeWrapper, languageChangeHeader, languageChangeButtons, languageChangeCurrentLang, mainContainer, buttonCitySearch, inputCitySearch,  temperatureButton, temperatureFahrenheit, temperatureCelsius, microphone, currentDate, currentCity, months} from './variables';
 
-export {changeBackground};
+export {changeBackground, getRandomBackground};
 
 // return url link with random photo
 
