@@ -92,7 +92,7 @@
     }
 
     &__city{
-        font-size: 5.4rem;
+        font-size: 4rem;
         margin-left: 3rem;
         overflow-wrap: anywhere;
         font-family: Montserrat-Bold;
@@ -102,7 +102,7 @@
         }
         @include media-mobile {
             margin-left: 0;
-            font-size: 3rem;
+            font-size: 2.6rem;
         }
     }
 
@@ -116,7 +116,7 @@
     }
 
     &__temperature{
-        font-size: 30rem;
+        font-size: 27rem;
         font-family: Montserrat-Bold;
         position: absolute;
         top: 35%;
@@ -161,7 +161,7 @@
         font-family: Montserrat-Bold;
         line-height: 37px;
         text-transform: uppercase;
-        width: 260px;
+        width: 270px;
 
         @include media-laptop-small {
             right: -8%;
@@ -193,7 +193,7 @@
         line-height: 2.7rem;
         text-transform: uppercase;
         @include media-mobile {
-            font-size: 3.2rem;
+            font-size: 2.6rem;
         }
     }
 
@@ -208,11 +208,12 @@
     &__img{
         width: 70px;
         position: absolute;
-        top: 13px;
-        right: -15px;
+        top: 25px;
+        right: -20px;
 
         @include media-laptop-small {
             right: -35px;
+            top: 30px;
         }
     }
 }
